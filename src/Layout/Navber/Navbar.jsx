@@ -11,11 +11,11 @@ const Navbar = () => {
     const { user, logOut, toggleDarkMode, darkMode } = useAuth();
 
     const navLink = <>
-        <li><NavLink to='/' className="text-[#DDDDDD] mr-2">Home</NavLink></li>
-        <li><NavLink to='/meals' className="text-[#DDDDDD] mr-2">Meals</NavLink></li>
+        <li><NavLink to='/' className="text-[#FFD700] mr-2">Home</NavLink></li>
+        <li><NavLink to='/meals' className="text-[#FFD700] mr-2">Meals</NavLink></li>
     </>
     return (
-        <div className={`navbar ${darkMode ? 'bg-black' : 'bg-[#161616]'} sticky top-0 z-20 shadow-lg`}>
+        <div className={`navbar ${darkMode ? 'bg-black' : 'bg-[#001F3F]'} sticky top-0 z-20 shadow-lg`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,7 +26,7 @@ const Navbar = () => {
                         {navLink}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl text-[#DDDDDD] ">UniStayHub</Link>
+                <Link className="btn btn-ghost normal-case text-xl text-[#DDDDDD] ">Task Manager</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -64,9 +64,9 @@ const Navbar = () => {
                 ) : (
                     <Link
                         to='/login'
-                        className="bg-gradient-to-r from-teal-400 to-teal-600 text-white font-semibold py-2 px-4 rounded-br-full rounded-tl-full transition duration-300 ease-in-out hover:scale-x-105"
+                        className="bg-[#FFD700] hover:bg-[#B8860B] text-[#001F3F] hover:text-[#001F3F] font-semibold py-2 px-4 rounded-full transition duration-300  hover:scale-x-105"
                     >
-                        Join US
+                       Let&apos;s Explore
                     </Link>
                 )}
 
