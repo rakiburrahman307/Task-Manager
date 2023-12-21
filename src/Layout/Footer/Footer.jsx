@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../Hook/useAuth";
+
 
 
 const Footer = () => {
+    const {darkMode} = useAuth();
     return (
-<footer className="footer footer-center p-10 bg-[#001F3F] text-primary-content rounded">
+<footer className={`footer footer-center p-10 ${darkMode ? 'bg-black' : 'bg-[#001F3F]'} text-primary-content rounded`}>
   <nav className="grid grid-flow-col gap-4">
     <Link to='/about' className="link link-hover">About us</Link>
     <Link to='contact' className="link link-hover">Contact</Link>

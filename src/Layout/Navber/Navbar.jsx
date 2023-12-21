@@ -12,7 +12,8 @@ const Navbar = () => {
 
     const navLink = <>
         <li><NavLink to='/' className="text-[#FFD700] mr-2">Home</NavLink></li>
-        <li><NavLink to='/meals' className="text-[#FFD700] mr-2">Meals</NavLink></li>
+        <li><NavLink to='/about' className="text-[#FFD700] mr-2">About</NavLink></li>
+        <li><NavLink to='/contact' className="text-[#FFD700] mr-2">Contact Us</NavLink></li>
     </>
     return (
         <div className={`navbar ${darkMode ? 'bg-black' : 'bg-[#001F3F]'} sticky top-0 z-20 shadow-lg`}>

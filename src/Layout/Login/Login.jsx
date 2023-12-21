@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useAuth from "../../Hook/useAuth";
+import PageHelmet from "../../Hook/PageHelmet";
 
 
 
@@ -10,7 +10,6 @@ const Login = () => {
     const { logInWithGoogle, logInWithEmailAndPassword } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    // const axiosSecure = useAxiosSecure();
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
     const {
         register,
@@ -34,27 +33,12 @@ const Login = () => {
 
 
     };
-
+    // Sign in With Google 
     const handleLogInWithGoogle = () => {
         logInWithGoogle()
             .then(() => {
                 toast.success('Sign in successful');
-                 navigate(location?.state ? location.state : '/');
-
-                // const userInfo = {
-                //     name: res?.user?.displayName,
-                //     email: res?.user?.email,
-                //     photoURL: res?.user?.photoURL
-                // }
-                // axiosSecure.patch('/users', userInfo)
-                //     .then(res => {
-                //         if (res.data.insertedId) {
-                //             
-                //         }
-                //     })
-                //     .catch(err => console.log(err.message));
-
-
+                navigate(location?.state ? location.state : '/');
             })
             .catch((err) => {
                 toast.error(err.message);
@@ -63,6 +47,7 @@ const Login = () => {
     return (
 
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/p0RZHR7/vecteezy-fingerprint-identity-sensor-data-protection-system-podium-7164537.jpg)' }}>
+            <PageHelmet title='Login || Task Manager'></PageHelmet>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="hero min-h-screen bg-transparent">
@@ -71,7 +56,7 @@ const Login = () => {
                             <h1 className="text-5xl font-bold">Welcome</h1>
 
                             <p className="py-6">
-                            Log in to elevate your task management experience. Seamlessly organize and conquer your projects with our Task Manager. Comfort, convenience, and security - all in one place. Let&apos;s get productive!
+                                Log in to elevate your task management experience. Seamlessly organize and conquer your projects with our Task Manager. Comfort, convenience, and security - all in one place. Let&apos;s get productive!
                             </p>
                         </div>
 
@@ -110,7 +95,7 @@ const Login = () => {
                                     {errors.password && <span className="text-red-700">{errors.password.message}</span>}
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className=" bg-[#FFD700] hover:[#FFDB58] text-[#001F3F] dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button>
+                                    <button className=" bg-[#FFD700] hover:[#FFDB58] text-[rgb(0,31,63)] dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button>
                                 </div>
                                 <label className="label">
                                     <Link to="/registration" className="label-text-alt link link-hover">Don not have an account? Please Sign up</Link>
