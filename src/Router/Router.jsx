@@ -61,7 +61,7 @@ const Router = createBrowserRouter([
       {
         path: '/dashboard/find_task/:id',
         element: <UpdateTask></UpdateTask>,
-        loader: ({params})=> fetch(`http://localhost:5000/find_task/${params.id}`)
+        loader: ({params})=> fetch(`https://task-manager-server-livid.vercel.app/find_task/${params.id}`)
       }
       ]
     }

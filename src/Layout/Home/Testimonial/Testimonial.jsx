@@ -3,7 +3,7 @@ import useAuth from "../../../Hook/useAuth";
 const Testimonial = () => {
   const {darkMode} = useAuth();
   return (
-    <div className={`${darkMode ? 'bg-gray-700' : 'bg-teal-800'} text-white p-8`}>
+    <div className={`${darkMode ? 'bg-gray-700' : 'bg-[#06427d]'} text-white p-8`}>
     <h2 className="text-4xl text-[#FFD700] font-semibold mb-8 text-center">What Users Say</h2>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

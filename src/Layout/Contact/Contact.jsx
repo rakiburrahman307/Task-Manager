@@ -34,8 +34,8 @@ const Contact = () => (
         <div>
           <h3 className="text-2xl font-semibold mb-4">Contact Information</h3>
           <p className="mb-2"><span className="font-semibold">Email:</span> info@yourcompany.com</p>
-          <p className="mb-2"><span className="font-semibold">Phone:</span> +1 (123) 456-7890</p>
-          <p className="mb-2"><span className="font-semibold">Address:</span> 123 Main Street, Cityville, USA</p>
+          <p className="mb-2"><span className="font-semibold">Phone:</span> +88 0174918****</p>
+          <p className="mb-2"><span className="font-semibold">Address:</span> Mirpur 2, Dhaka, Bangladesh</p>
         </div>
       </div>
     </div>

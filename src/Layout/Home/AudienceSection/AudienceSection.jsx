@@ -3,7 +3,7 @@ import useAuth from "../../../Hook/useAuth";
 const AudienceSection = () => {
     const {darkMode}= useAuth();
     return (
-        <div className={` ${darkMode ? 'bg-gray-800' : 'bg-teal-600'} text-gray-800 p-8`}>
+        <div className={` ${darkMode ? 'bg-gray-800' : 'bg-[#05294e]'} text-gray-800 p-8`}>
     <h2 className="text-4xl text-[#FFD700] text-center text- font-semibold mb-6">Who Can Benefit from Our Website?</h2>
 
     <div className="group audience-card transform hover:scale-105 transition-transform duration-300 bg-white border border-gray-300 rounded p-6 mb-4 shadow-md">

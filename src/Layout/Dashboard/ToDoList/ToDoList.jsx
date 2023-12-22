@@ -82,7 +82,7 @@ const ToDoList = () => {
             <td>Description</td>
             <td>Priority</td>
             <td>Date</td>
-            <td>Status</td>
+
             <td>Action</td>
             <th></th>
           </tr>
@@ -99,7 +99,7 @@ const ToDoList = () => {
                 task?.priority || 'None'
               }</td>
               <td>{task?.deadline}</td>
-              <td>{task?.status}</td>
+           
               <td className="flex items-center gap-3">
                 
                  <button onClick={() => handlePlay(task)} className="btn btn-ghost btn-xs bg-green-600 text-white hover:text-black">Play</button> 
