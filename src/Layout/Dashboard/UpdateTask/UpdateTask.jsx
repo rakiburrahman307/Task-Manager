@@ -1,16 +1,16 @@
-
 import { Controller, useForm } from "react-hook-form";
-import Heading from "../../../Hook/Heading";
 import PageHelmet from "../../../Hook/PageHelmet";
+import Heading from "../../../Hook/Heading";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import useAuth from "../../../Hook/useAuth";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
-import { toast } from "react-toastify";
+import { useLoaderData } from "react-router-dom";
 
-const AddTask = () => {
-    const { user } = useAuth();
+
+const UpdateTask = () => {
+    const taskData = useLoaderData();
+    const {_id,title, description, priority}=taskData;
     const axiosSecure = useAxiosSecure();
     const [startDate, setStartDate] = useState(new Date());
     const {
@@ -21,18 +21,15 @@ const AddTask = () => {
     } = useForm();
 
     const onSubmit = (event) => {
-        const name = user?.displayName;
-        const email = user?.email;
         const title = event.title;
         const description = event.description;
         const priority = event.selectOption;
         const deadline = startDate;
-        const status = 'todo';
-        const data = {name, email, title, description, priority, status, deadline };
-        axiosSecure.post('/new_task', data)
+        const data = {title, description, priority, deadline };
+        axiosSecure.patch(`/update_task/${_id}`, data)
         .then(res => {
-            if (res.data.insertedId) {
-                toast.success('Task Added successfully');
+            if (res.data.modifiedCount > 0) {
+                toast.success('Task Update successfully');
 
             }
         })
@@ -40,8 +37,8 @@ const AddTask = () => {
     };
     return (
         <div>
-            <PageHelmet title='Add Task || Task Manager'></PageHelmet>
-            <Heading heading='Add Task' subHeading='Fell Free Add your Task Here'></Heading>
+            <PageHelmet title='Update Task || Task Manager'></PageHelmet>
+            <Heading heading='Update Task' subHeading='Fell Free Update your Task Here'></Heading>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
@@ -51,6 +48,7 @@ const AddTask = () => {
                         </label>
                         <input
                             type="text"
+                            defaultValue={title}
                             className="input input-bordered text-black"
                             {...register('title', {
                                 required: 'Name is required',
@@ -64,6 +62,7 @@ const AddTask = () => {
                             <span className="label-text">Description</span>
                         </label>
                         <input
+                            defaultValue={description}
                             type="text"
                             className="input input-bordered text-black"
                             {...register('description', { required: 'Description is required' })}
@@ -75,6 +74,7 @@ const AddTask = () => {
                             <span className="label-text">Priority</span>
                         </label>
                         <Controller
+                            defaultValue={priority}
                             name="selectOption"
                             control={control}
                             render={({ field }) => (
@@ -95,7 +95,7 @@ const AddTask = () => {
                         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                     <div className="form-control mt-6">
-                        <button className=" bg-[#FFD700] hover:[#FFDB58] text-[rgb(0,31,63)] dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add Task</button>
+                        <button className=" bg-[#FFD700] hover:[#FFDB58] text-[rgb(0,31,63)] dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Update Task</button>
                     </div>
 
 
@@ -105,4 +105,4 @@ const AddTask = () => {
     );
 };
 
-export default AddTask;
+export default UpdateTask;

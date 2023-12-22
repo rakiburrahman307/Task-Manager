@@ -50,26 +50,13 @@ const AuthProvider = ({ children }) => {
   // User State Change 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      const userEmail = currentUser?.email || user?.email;
-      const userLoggedIn = { email: userEmail };
+
 
       if (currentUser) {
         setUser(currentUser);
-        axiosSecure.post('/jwt', userLoggedIn)
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.error(err.message);
-          });
+
       } else {
-        axiosSecure.post('/logout', userLoggedIn)
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.error(err.message);
-          });
+
         setUser(null);
       }
       setLoading(false);

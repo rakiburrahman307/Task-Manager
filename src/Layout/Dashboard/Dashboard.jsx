@@ -3,60 +3,55 @@ import { FaHome, } from "react-icons/fa";
 import { MdAddTask } from "react-icons/md";
 import { LuClipboardList } from "react-icons/lu";
 import { RiPlayList2Fill } from "react-icons/ri";
-import { GoChecklist } from "react-icons/go";
 import { useEffect } from "react";
 import useAuth from "../../Hook/useAuth";
+import { ToastContainer } from "react-toastify";
 
 
 const Dashboard = () => {
- const {user}= useAuth();
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
-    
+
         if (user) {
             navigate('/dashboard/add-task');
-        }else{
+        } else {
             navigate('/');
         }
     }, [user, navigate]);
 
     return (
         <div className="flex">
-
+            <ToastContainer />
             {/* dashboard side bar */}
             <div className="w-32 md:w-64 min-h-screen bg-base-200">
-                <ul data-aos="fade-up" className="menu rounded-box p-0 md:p-5">
-                    {user &&  (
+                <ul onDrop='' data-aos="fade-up" className="menu rounded-box p-0 md:p-5">
+                    {user && (
                         <>
                             <li data-aos="fade-up">
                                 <Link to="/dashboard/add-task" className="flex flex-col md:flex-row items-center text-center">
-                                <MdAddTask />
+                                    <MdAddTask />
                                     Add Task
                                 </Link>
                             </li>
                             <li data-aos="fade-up">
                                 <Link to="/dashboard/to-do-list" className="flex flex-col md:flex-row items-center text-center">
-                                <LuClipboardList />
-                                   To Do List
+                                    <LuClipboardList />
+                                    To Do List
                                 </Link>
                             </li>
-                            <li data-aos="fade-up">
+                            <li data-aos="fade-up" draggable='true'>
                                 <Link to="/dashboard/ongoing-list" className="flex flex-col md:flex-row items-center text-center">
-                                <RiPlayList2Fill />
+                                    <RiPlayList2Fill />
                                     Ongoing List
                                 </Link>
                             </li>
-                            <li data-aos="fade-up">
-                                <Link to="/dashboard/compleat" className="flex flex-col md:flex-row items-center text-center">
-                                    <GoChecklist />
-                                    Complete List
-                                </Link>
-                            </li>
+                           
 
                         </>
-                    ) 
-                    
+                    )
+
                     }
 
                 </ul>

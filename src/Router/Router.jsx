@@ -9,8 +9,8 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import AddTask from "../Layout/Dashboard/Add Task/AddTask";
 import Ongoing from "../Layout/Dashboard/Ongoing/Ongoing";
-import CompleatTask from "../Layout/Dashboard/Compleate/CompeleTask";
 import ToDoList from "../Layout/Dashboard/ToDoList/ToDoList";
+import UpdateTask from "../Layout/Dashboard/UpdateTask/UpdateTask";
 
 const Router = createBrowserRouter([
     {
@@ -57,9 +57,11 @@ const Router = createBrowserRouter([
         path: '/dashboard/ongoing-list',
         element: <Ongoing></Ongoing>
       },
+  
       {
-        path:'/dashboard/compleat',
-        element: <CompleatTask></CompleatTask>
+        path: '/dashboard/find_task/:id',
+        element: <UpdateTask></UpdateTask>,
+        loader: ({params})=> fetch(`http://localhost:5000/find_task/${params.id}`)
       }
       ]
     }
